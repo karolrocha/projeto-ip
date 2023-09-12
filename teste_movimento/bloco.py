@@ -1,21 +1,23 @@
 import pygame as pg
-class PlayerRect():
-    def __init__(self, color, width, height, x: int=0, y: int=0):
-        self.x = x
-        self.y = y
-        self.speed = 5 # px/s 
-        self.width = width
-        self.height = height
-        self.color = color
 
-    def draw(self, surface):
-        pg.draw.rect(surface, self.color, (self.x, self.y, self.width, self.height))
-    
-    # x cresce da esquerda para a direita e y cresce de cima para baixo
-    # canto superior esquerdo da tela = origem
+class PlayerRect(pg.sprite.Sprite):
+    def __init__(self, color, width, height):
+        super().__init__()
+        self.speed = 5  # px/s
+        self.image = pg.Surface((width, height))
+        self.image.fill(color)
+        self.rect = self.image.get_rect()
+
     def update(self):
         keys = pg.key.get_pressed()
-        if keys[pg.K_a]: self.x -= self.speed
-        if keys[pg.K_d]: self.x += self.speed
-        if keys[pg.K_w]: self.y -= self.speed
-        if keys[pg.K_s]: self.y += self.speed 
+        if keys[pg.K_a]:
+            self.rect.x -= self.speed
+        if keys[pg.K_d]:
+            self.rect.x += self.speed
+        if keys[pg.K_w]:
+            self.rect.y -= self.speed
+        if keys[pg.K_s]:
+            self.rect.y += self.speed
+
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)

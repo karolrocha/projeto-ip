@@ -41,6 +41,9 @@ class Player(Sprite):
             self.rect.x = DISPLAY_WIDTH if self.rect.x < 0 else 0
         
         # Eixo y
+        if self.state!=FALLING:
+            self.highest_y=self.rect.bottom
+
         self.vy += GRAVITY
         self.rect.y += self.vy
 

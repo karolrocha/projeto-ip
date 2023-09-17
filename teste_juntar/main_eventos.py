@@ -48,13 +48,10 @@ while running:
             #fecha no botao de quit da janela ou apertando ESC
             running = False
             break 
-    
-    # Updates
-    moeda_group=new_coins(moeda_group)
 
     player.update(plat_group)
-    plat_group.update(player)
-    moeda_group.update()
+    plat_group.update(player,moeda_group)
+    moeda_group.update(player)
 
     hits = pg.sprite.spritecollide(player, moeda_group, True)
     score += len(hits)

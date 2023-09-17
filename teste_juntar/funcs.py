@@ -49,7 +49,7 @@ class Platform(Sprite):
         
         super().__init__()
         image = pg.image.load(img)
-        self.image = pg.transform.scale(image, (250, 30))
+        self.image = pg.transform.scale(image, (150, 30))
         self.rect = self.image.get_rect()
         self.rect.x = pos[0]
         self.rect.y = pos[1]

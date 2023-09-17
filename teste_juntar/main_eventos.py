@@ -1,6 +1,8 @@
 from funcs import *
 from tela_jogo import Level
 from player import Player
+from coletaveis import Moeda
+from cenario import Platform
 
 pg.init()
 

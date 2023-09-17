@@ -1,13 +1,13 @@
 from funcs import *
 
 class Player(Sprite):
-    def __init__(self, img, pos: tuple=(0,0)):
+    def __init__(self, img, pos: tuple=(0,DISPLAY_HEIGHT)):
         super().__init__() 
 
         image = pg.image.load(img)
         self.image = pg.transform.scale(image, (80,100))
 
-        self.rect = self.image.get_rect(center=pos)
+        self.rect = self.image.get_rect(topleft=pos)
         self.center = self.rect.center
         self.highest_y = 0
 
@@ -34,7 +34,7 @@ class Player(Sprite):
         
     def update(self,plat_group):
         self.get_input() 
-        
+
         # Eixo X
         # Se chegar em uma extremidade da tela -> vai para a extremidade oposta 
         if not -self.rect.width < self.rect.x < DISPLAY_WIDTH:
@@ -46,12 +46,11 @@ class Player(Sprite):
 
         self.vy += GRAVITY
         self.rect.y += self.vy
-
+        
         if self.vy > 0: 
             self.state = FALLING
             collisions = pg.sprite.spritecollide(self, plat_group, False)
             for platform in collisions:
-                # verifica se a altura alcançada durante o pulo está acima da plataforma
                 if self.highest_y <= platform.rect.top:
                     self.rect.bottom = platform.rect.top  # atualiza a altura no mapa
                     self.highest_y = self.rect.bottom   

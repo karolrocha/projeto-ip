@@ -22,16 +22,20 @@ dt = 0 #segundos
 
 
 # dados do player
-player = Player('images/hero.png',(DISPLAY_WIDTH/2,0))
+player = Player('images/hero.png',(DISPLAY_WIDTH/2, DISPLAY_HEIGHT))
 height_p = player.rect.height
 width_p = player.rect.width
 
-plataforma = Platform((120,240,120))
+plataforma1 = Platform('images\plataforma.jpg', 150, 650 )
+plataforma2 = Platform('images\plataforma.jpg', 300, 500 )
+plataforma3 = Platform('images\plataforma.jpg', 450, 350 )
+plataforma4 = Platform('images\plataforma.jpg', 600, 200 )
+plataforma5 = Platform('images\plataforma.jpg', 750, 50 )
 plat_group = pg.sprite.Group()
-plat_group.add(plataforma)
+plat_group.add(plataforma1, plataforma2, plataforma3, plataforma4, plataforma5)
 
 moeda_group = pg.sprite.Group()  # Crie um grupo de sprites para as moedas
-moeda = Moeda((255, 255, 0), 10, DISPLAY_WIDTH, DISPLAY_HEIGHT)
+moeda = Moeda('images\moeda.png', 10, DISPLAY_WIDTH, DISPLAY_HEIGHT)
 
 all_sprites = pg.sprite.Group()
 
@@ -61,7 +65,7 @@ while running:
     
     # Display atualizado
     gamescreen.run()
-    score_text = font.render("SCORE: " + str(score), True, (255, 200, 100))
+    score_text = font.render("Moedas: " + str(score), True, (255, 200, 100))
     screen.blit(score_text, (50, 50))
 
     player.draw(screen)

@@ -13,3 +13,7 @@ teste_menu_&_tela_de_jogo/__pycache__/funcs.cpython-311.pyc
 teste_juntar/__pycache__/player.cpython-311.pyc
 teste_juntar/__pycache__/tela_jogo.cpython-311.pyc
 teste_juntar/__pycache__/funcs.cpython-311.pyc
+game/__pycache__/cenario.cpython-311.pyc
+game/__pycache__/coletaveis.cpython-311.pyc
+game/__pycache__/player.cpython-311.pyc
+game/__pycache__/funcs.cpython-311.pyc

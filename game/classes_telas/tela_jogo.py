@@ -8,7 +8,7 @@ class Level():
         self.screen = screen
         self.image = background_img
 
-    def run(self,player,score,font):
+    def run(self,player,score,font, tempo, botas):
         dt = 0 #segundos
         clock = pg.time.Clock()
 
@@ -23,6 +23,8 @@ class Level():
 
 
         moeda_group = pg.sprite.Group()  # Crie um grupo de sprites para as moedas
+        tempoextra_group = pg.sprite.Group()
+        puloduplo_group = pg.sprite.Group()
 
         pg.display.set_caption('Jogo')
         running = True
@@ -38,18 +40,32 @@ class Level():
                     break
 
             player.update(plat_group)
-            plat_group.update(player,moeda_group)
+            plat_group.update(player,moeda_group, tempoextra_group, puloduplo_group)
             moeda_group.update(player)
+            tempoextra_group.update(player)
+            puloduplo_group.update(player)
 
             hits = pg.sprite.spritecollide(player, moeda_group, True)
             score += len(hits)
 
+            hits = pg.sprite.spritecollide(player, tempoextra_group, True)
+            tempo += (len(hits)*10)
+
+            hits = pg.sprite.spritecollide(player, puloduplo_group, True)
+            botas += len(hits)
+
             # Display atualizado
-            score_text = font.render("Moedas: " + str(score), True, (200, 200, 100))
+            score_text = font.render("MOEDAS: " + str(score), True, (200, 200, 100))
+            botas_text = font.render("BOTAS: " + str(botas), True, (200, 200, 100))
+            tempo_text = font.render("TEMPO: " + str(tempo), True, (200, 200, 100))
             self.screen.blit(score_text, (50, 50))
+            self.screen.blit(botas_text, (50, 100))
+            self.screen.blit(tempo_text, (50, 150))
 
             plat_group.draw(self.screen)
             moeda_group.draw(self.screen)
+            tempoextra_group.draw(self.screen)
+            puloduplo_group.draw(self.screen)
             player.draw(self.screen)
 
             pg.display.flip()

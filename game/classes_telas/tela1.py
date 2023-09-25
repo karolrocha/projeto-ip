@@ -10,8 +10,8 @@ tela = pygame.display.set_mode((DISPLAY_WIDTH, DISPLAY_HEIGHT))
 pygame.display.set_caption("Menu Inicial")
 
 # Cores
-COR_FUNDO = (0, 0, 0)
-COR_TEXTO = (255, 255, 255)
+COR_FUNDO = (100, 0, 255)
+COR_TEXTO = (255, 255, 100)
 
 # Fonte do texto
 FONTE = pygame.font.Font(None, 36)

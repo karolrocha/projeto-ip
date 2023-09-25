@@ -9,7 +9,12 @@ COR_TEXTO = (255, 255, 255)
 # Fonte do texto e score
 FONT_TEXT = pg.font.Font(None, 36) 
 FONT_SCORE = pg.font.Font(None, 36)
+FONT_TEMPO = pg.font.Font(None, 36)
+FONT_BOTAS = pg.font.Font(None, 36)
+
 score = 0
+tempo = 60
+botas = 0
 
 # Configuração da tela
 DISPLAY_RESOLUTION = (1280, 720)  # Definir resolução desejada para tela cheia
@@ -36,7 +41,7 @@ while True:
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_RETURN:
                 if selecionado == 0:
-                    gamescreen.run(player, score, FONT_SCORE)
+                    gamescreen.run(player, score, FONT_SCORE, tempo, botas)
                 elif selecionado == 1:
                     #configuracoes()
                     pass

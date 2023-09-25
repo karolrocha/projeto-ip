@@ -22,6 +22,11 @@ class Player(Sprite):
         if self.state == STILL:
             self.vy -= JUMP_SIZE  # no primeiro tick JUMP_SIZE move o sprite 30pxs para cima
             self.state = JUMPING
+            
+    def double_jump(self):
+        if self.state == STILL:
+            self.vy -= 1.5*JUMP_SIZE  # no primeiro tick JUMP_SIZE move o sprite 30pxs para cima
+            self.state = JUMPING
 
     def get_input(self):
         keys = pg.key.get_pressed()
@@ -31,6 +36,8 @@ class Player(Sprite):
             self.rect.x += self.vx  
         if keys[pg.K_SPACE]: 
             self.jump()
+        if keys[pg.K_e]: 
+            self.double_jump()
         
     def update(self,plat_group):
         self.get_input() 

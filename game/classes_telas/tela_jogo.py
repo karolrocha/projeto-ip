@@ -11,6 +11,7 @@ class Level():
     def run(self,player,score,font, tempo, botas):
         dt = 0 #segundos
         clock = pg.time.Clock()
+        cont = 0
 
         # dados do player
         player = Player('images/hero.png')
@@ -31,13 +32,24 @@ class Level():
         while running:
             self.screen.blit(self.image,(0,0))
             keys=pg.key.get_pressed()
+
+            # contagem regressiva
+            cont += 1
+            if cont//60 == cont/60:
+                tempo -= 1
             
             # Eventos
             for event in pg.event.get():
                 if event.type == pg.QUIT or (event.type == pg.KEYDOWN and pg.key.get_pressed()[pg.K_ESCAPE]): 
                     #fecha no botao de quit da janela ou apertando ESC
                     running = False
-                    break
+                    pg.quit()
+                    sys.exit()
+
+            # Quando o tempo acabar volta para o menu
+            if tempo <= -0.5:
+                running = False
+                break
 
             player.update(plat_group)
             plat_group.update(player,moeda_group, tempoextra_group, puloduplo_group)

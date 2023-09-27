@@ -1,3 +1,6 @@
+import sys
+sys.path.append('game')
+
 from funcs import *
 from player import Player
 from cenario import *
@@ -8,11 +11,14 @@ class Level():
         self.screen = screen
         self.image = background_img
 
-    def run(self,player,score,font, tempo, botas):
+    def run(self,player,font):
         dt = 0 #segundos
         clock = pg.time.Clock()
-        cont = 0
+        timer = Timer()
 
+        score = 0
+        botas = 0
+        
         # dados do player
         player = Player('images/hero.png')
 
@@ -24,7 +30,7 @@ class Level():
 
 
         moeda_group = pg.sprite.Group()  # Crie um grupo de sprites para as moedas
-        tempoextra_group = pg.sprite.Group()
+        # tempoextra_group = pg.sprite.Group()
         puloduplo_group = pg.sprite.Group()
 
         pg.display.set_caption('Jogo')
@@ -32,11 +38,6 @@ class Level():
         while running:
             self.screen.blit(self.image,(0,0))
             keys=pg.key.get_pressed()
-
-            # contagem regressiva
-            cont += 1
-            if cont//60 == cont/60:
-                tempo -= 1
             
             # Eventos
             for event in pg.event.get():
@@ -47,21 +48,19 @@ class Level():
                     sys.exit()
 
             # Quando o tempo acabar volta para o menu
-            if tempo <= -0.5:
+            if timer.time <= -0.5:
                 running = False
                 break
 
             player.update(plat_group)
-            plat_group.update(player,moeda_group, tempoextra_group, puloduplo_group)
+            plat_group.update(player, moeda_group, timer, puloduplo_group)
             moeda_group.update(player)
-            tempoextra_group.update(player)
+            Relogio.clock_group.update(player)
             puloduplo_group.update(player)
+            timer.update()
 
             hits = pg.sprite.spritecollide(player, moeda_group, True)
             score += len(hits)
-
-            hits = pg.sprite.spritecollide(player, tempoextra_group, True)
-            tempo += (len(hits)*10)
 
             hits = pg.sprite.spritecollide(player, puloduplo_group, True)
             botas += len(hits)
@@ -69,16 +68,15 @@ class Level():
             # Display atualizado
             score_text = font.render("MOEDAS: " + str(score), True, (200, 200, 100))
             botas_text = font.render("BOTAS: " + str(botas), True, (200, 200, 100))
-            tempo_text = font.render("TEMPO: " + str(tempo), True, (200, 200, 100))
             self.screen.blit(score_text, (50, 50))
             self.screen.blit(botas_text, (50, 100))
-            self.screen.blit(tempo_text, (50, 150))
 
             plat_group.draw(self.screen)
             moeda_group.draw(self.screen)
-            tempoextra_group.draw(self.screen)
+            Relogio.clock_group.draw(self.screen)
             puloduplo_group.draw(self.screen)
             player.draw(self.screen)
+            timer.draw(self.screen)
 
             pg.display.flip()
             dt += clock.tick(60)/1000

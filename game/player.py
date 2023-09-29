@@ -11,6 +11,9 @@ class Player(Sprite):
         self.center = self.rect.center
         self.highest_y = 0
 
+        self.score = 0
+        self.botas = 0
+
         self.state = FALLING
         self.vx = 15 # pxs/tick
         self.vy = 0
@@ -24,9 +27,10 @@ class Player(Sprite):
             self.state = JUMPING
             
     def double_jump(self):
-        if self.state == STILL:
+        if self.state == STILL and self.botas > 0:
             self.vy -= 1.5*JUMP_SIZE  # no primeiro tick JUMP_SIZE move o sprite 30pxs para cima
             self.state = JUMPING
+            self.botas = self.botas - 1
 
     def get_input(self):
         keys = pg.key.get_pressed()

@@ -15,9 +15,6 @@ class Level():
         dt = 0 #segundos
         clock = pg.time.Clock()
         timer = Timer()
-
-        score = 0
-        botas = 0
         
         # dados do player
         player = Player('images/hero.png')
@@ -60,14 +57,14 @@ class Level():
             timer.update()
 
             hits = pg.sprite.spritecollide(player, moeda_group, True)
-            score += len(hits)
+            player.score += len(hits)
 
             hits = pg.sprite.spritecollide(player, puloduplo_group, True)
-            botas += len(hits)
+            player.botas += len(hits)
 
             # Display atualizado
-            score_text = font.render("MOEDAS: " + str(score), True, (200, 200, 100))
-            botas_text = font.render("BOTAS: " + str(botas), True, (200, 200, 100))
+            score_text = font.render("MOEDAS: " + str(player.score), True, (200, 200, 100))
+            botas_text = font.render("BOTAS: " + str(player.botas), True, (200, 200, 100))
             self.screen.blit(score_text, (50, 50))
             self.screen.blit(botas_text, (50, 100))
 

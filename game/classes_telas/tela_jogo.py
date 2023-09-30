@@ -1,4 +1,5 @@
 import sys
+from classes_telas.telaGO import mostrar_game_over
 sys.path.append('game')
 
 from funcs import *
@@ -47,7 +48,7 @@ class Level():
             # Quando o tempo acabar volta para o menu
             if timer.time <= -0.5:
                 running = False
-                break
+                mostrar_game_over()
 
             player.update(plat_group)
             plat_group.update(player, moeda_group, timer, puloduplo_group)
@@ -63,10 +64,18 @@ class Level():
             player.botas += len(hits)
 
             # Display atualizado
-            score_text = font.render("MOEDAS: " + str(player.score), True, (200, 200, 100))
-            botas_text = font.render("BOTAS: " + str(player.botas), True, (200, 200, 100))
-            self.screen.blit(score_text, (50, 50))
-            self.screen.blit(botas_text, (50, 100))
+            moeda_imagem = pg.image.load('images/moeda.png')
+            moeda_imagem = pg.transform.scale(moeda_imagem, (35, 35))
+            self.screen.blit(moeda_imagem, (DISPLAY_WIDTH-50, DISPLAY_HEIGHT-677))
+
+            botas_imagem = pg.image.load('images/bota.png')
+            botas_imagem = pg.transform.scale(botas_imagem, (38, 38))
+            self.screen.blit(botas_imagem, (DISPLAY_WIDTH-50, DISPLAY_HEIGHT-625))
+
+            score_text = font.render(str(player.score), True, (255, 255, 255))
+            botas_text = font.render(str(player.botas), True, (255, 255, 255))
+            self.screen.blit(score_text, (DISPLAY_WIDTH-70, DISPLAY_HEIGHT-672))
+            self.screen.blit(botas_text, (DISPLAY_WIDTH-70, DISPLAY_HEIGHT-620))
 
             plat_group.draw(self.screen)
             moeda_group.draw(self.screen)

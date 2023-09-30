@@ -1,4 +1,5 @@
 from funcs import *
+from classes_telas.telaGO import mostrar_game_over
 
 class Player(Sprite):
     def __init__(self, img, pos: tuple=(0,DISPLAY_HEIGHT)):
@@ -11,6 +12,7 @@ class Player(Sprite):
         self.center = self.rect.center
         self.highest_y = 0
 
+        self.chao = 0
         self.score = 0
         self.botas = 0
 
@@ -73,3 +75,9 @@ class Player(Sprite):
             self.rect.bottom = GROUND
             self.vy = 0
             self.state = STILL
+
+        if self.rect.bottom == GROUND:
+            self.chao +=1
+
+        if self.chao > 120:
+            mostrar_game_over()

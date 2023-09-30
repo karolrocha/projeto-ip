@@ -62,9 +62,9 @@ class Timer(Sprite):
         super().__init__()
 
         image = load('images/relogio.png')
-        self.image = pg.transform.scale(image, (64,64))
+        self.image = pg.transform.scale(image, (35,35))
         self.rect = self.image.get_rect()
-        self.rect.bottomright = bottomright
+        self.rect.bottomright = (DISPLAY_WIDTH-10, DISPLAY_HEIGHT-540)
         
         self.color = (255,255,255)
 
@@ -99,7 +99,7 @@ class Timer(Sprite):
 
         # generaliza pra quando o texto atualiza (o bottomright sempre se mantem o mesmo)
         text_rect = self.text.get_rect()
-        text_rect.bottomright = (DISPLAY_WIDTH-74,DISPLAY_HEIGHT)
+        text_rect.bottomright = (DISPLAY_WIDTH-50, DISPLAY_HEIGHT-540)
 
         screen.blit(self.text,text_rect)
         screen.blit(self.image, self.rect)

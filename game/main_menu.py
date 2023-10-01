@@ -1,30 +1,18 @@
-# from classes_telas.tela1 import *
 from funcs import *
 from classes_telas.tela_jogo import * 
 
 pg.init()
-COR_FUNDO = (0, 0, 0)
-COR_TEXTO = (255, 255, 255)
-
-# Fonte do texto e score
-FONT_TEXT = pg.font.Font(None, 36) 
-FONT_SCORE = pg.font.Font(None, 36)
-FONT_TEMPO = pg.font.Font(None, 36)
-FONT_BOTAS = pg.font.Font(None, 36)
 
 # Configuração da tela
-# DISPLAY_RESOLUTION = (1280, 720)  # Definir resolução desejada para tela cheia
-fullscreen = False  # Inicialmente, a tela não está em modo de tela cheia
+fullscreen = False  
 
 screen = pg.display.set_mode(DISPLAY_RESOLUTION)
 background_img = pg.transform.scale(
     pg.image.load('images/background_castle_(resize).jpg'),
     DISPLAY_RESOLUTION
 )
+pg.display.set_caption('Menu')
 gamescreen = Level(screen, background_img)
-
-# dados do player
-player = Player('images/hero.png')
 
 opcoes = ["Iniciar", "Configurações", "Sair"]
 selecionado = 0
@@ -37,9 +25,11 @@ while True:
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_RETURN:
                 if selecionado == 0:
-                    gamescreen.run(player, FONT_SCORE)
+                    try:
+                        gamescreen.run()
+                    finally:
+                        pass
                 elif selecionado == 1:
-                    #configuracoes()
                     pass
                 elif selecionado == 2:
                     pg.quit()

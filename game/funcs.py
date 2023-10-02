@@ -14,7 +14,7 @@ DISPLAY_HEIGHT = 750
 DISPLAY_RESOLUTION = DISPLAY_WIDTH,DISPLAY_HEIGHT
 GAME_BG_IMG = 'game_sheet.png'
 
-FONTE_PATH = 'fonte/The Centurion .ttf'
+FONTE_PATH = 'game/fonte/The Centurion .ttf'
 BRANCO = (255, 255, 255)
 
 # plataformas iniciais

@@ -75,7 +75,7 @@ Nesse terceiro ponto, adquirimos uma valiosa experiência de trabalho em grupo, 
  ### Inicializando
  1. É necessário instalar a biblioteca PyGame para executar o jogo utilizando o comando "pip install pygame" no cmd.
  2. Clone/baixe o repositório em sua máquina para ter acesso ao código
- 3. Após instalar a biblioteca PyGame o arquivo zip em sua máquina local, execute o arquivo "main_menu.py"
+ 3. Após instalar a biblioteca PyGame o arquivo zip em sua máquina local, abra o folder do arquivo dentro de uma IDE e execute o arquivo "main_menu.py"
  ### Jogabilidade
 A - Move para esquerda<br>
 D - Move para direita<br>
@@ -85,3 +85,7 @@ E - Pulo duplo (Power-up)
 TIMER - Aumenta +10seg de tempo de sobrevivência <br>
 GOLD - Moedas coletáveis<br>
 BOTA - Power-up para pulo duplo<br>
+
+## Capturas de tela
+![image](https://github.com/karolrocha/projeto-ip/assets/144039459/88388d6f-7fa6-4789-9251-a941a9421e9d)
+

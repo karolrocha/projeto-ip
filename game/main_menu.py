@@ -81,7 +81,7 @@ class Menu(Sprite):
             # Criar texto para o menu
             fonte_titulo = pg.font.Font(FONTE_PATH, 60)
 
-            texto_tiulo = fonte_titulo.render('Medieval Jump', True, BRANCO)
+            texto_tiulo = fonte_titulo.render('Medieval Jumper', True, BRANCO)
             titulo_rect = texto_tiulo.get_rect()
             titulo_rect.center = (DISPLAY_WIDTH//2, 200)
             self.screen.blit(texto_tiulo,titulo_rect)

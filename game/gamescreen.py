@@ -85,10 +85,10 @@ class Level(Sprite):
         self.screen.blit(self.image, (0,0))
 
     def gameover(self):
-        msg1 = 'GameOver'
+        msg1 = 'Game Over'
         msg2 = 'Aperte  ESC  para voltar ao menu'
         fonte = pg.font.Font(FONTE_PATH,45)
-        
+
         texto1 = fonte.render(msg1, True, BRANCO)
         texto2 = fonte.render(msg2, True, BRANCO)
         txt1_rect = texto1.get_rect(center=(DISPLAY_WIDTH//2, 200))
@@ -110,7 +110,7 @@ class Level(Sprite):
         for coord in START_PLAT:
             Platform.group.add(Platform('images/plataforma.jpg', coord))
 
-        pg.display.set_caption('Medieval Jump')
+        pg.display.set_caption('Medieval Jumper')
         running = True
         while running:
             clock.tick(60)

@@ -64,7 +64,7 @@ class Menu(Sprite):
                     pg.quit()
                     sys.exit()
                 if event.type == pg.KEYDOWN:
-                    if event.key == pg.K_RETURN:
+                    if event.key == pg.K_RETURN or event.key == pg.K_SPACE:
                         if selecionado == 0:
                             try:
                                 self.gamescreen.run()
@@ -73,9 +73,9 @@ class Menu(Sprite):
                         elif selecionado == 1:
                             pg.quit()
                             sys.exit()
-                    elif event.key == pg.K_UP:
+                    elif event.key == pg.K_UP or event.key == pg.K_w:
                         selecionado = (selecionado - 1) % len(opcoes)
-                    elif event.key == pg.K_DOWN:
+                    elif event.key == pg.K_DOWN or event.key == pg.K_s:
                         selecionado = (selecionado + 1) % len(opcoes)
             
             # Criar texto para o menu

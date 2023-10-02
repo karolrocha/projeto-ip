@@ -1,18 +1,36 @@
 import sys
 sys.path.append('game')
+img_dir = 'images/background/'
 
 from funcs import *
 from player import Player
 from plataforma import Platform
 from coletaveis import *
-# from classes_telas.telaGO import mostrar_game_over
 
-class Level():
-    def __init__(self,screen,background_img):
+def load_sprites(dir: str, sheet: str):  # dim = 1000x750 
+    sprites = []
+    bg = load(dir+sheet).convert_alpha()
+    frames = bg.get_width()//1000
+
+    for num in range(frames):
+        image = bg.subsurface((num*1000,0), (1000,750))
+        sprites.append(image)
+
+    return sprites
+
+class Level(Sprite):
+    def __init__(self, screen: pg.surface.Surface):
+        super().__init__()
+
         self.screen = screen
-        self.image = background_img
-        self.group_sprites = Group()
+        self.sprites = load_sprites(img_dir,GAME_BG_IMG)
+        self.frame = 0
+        self.last_update = pg.time.get_ticks()
+        self.image = self.sprites[self.frame]
+        self.rect = self.image.get_rect()
+        self.scroll = 0
 
+        self.group_sprites = Group()
         self.player = Player()
 
     def update(self,player):    # Atualiza infos do display
@@ -35,6 +53,29 @@ class Level():
         botas_text = font.render(str(player.botas), True, (255, 255, 255))
         self.screen.blit(score_text, (DISPLAY_WIDTH-70, DISPLAY_HEIGHT-672))
         self.screen.blit(botas_text, (DISPLAY_WIDTH-70, DISPLAY_HEIGHT-620))
+    
+    def draw(self):
+        # ANIMACAO 
+        frame_ticks = 100   # Tempo de troca do frame em milissegundos
+        now = pg.time.get_ticks()
+
+        # Troca o frame se ja estiver na hora
+        if now - self.last_update >= frame_ticks:
+            self.last_update = now
+            self.frame += 1
+
+            if self.frame >= len(self.sprites):
+                self.frame = 0
+            center = self.rect.center
+
+            # Atualiza imagem atual
+            self.image = self.sprites[self.frame]
+            
+            # Atualiza os detalhes de posicionamento
+            self.rect = self.image.get_rect()
+            self.rect.center = center
+
+        self.screen.blit(self.image, (0,0))
 
     def reset(self):
         for group_type in self.group_sprites:
@@ -53,7 +94,8 @@ class Level():
         running = True
         while running:
             clock.tick(60)
-            self.screen.blit(self.image,(0,0))
+
+            self.draw()
             self.group_sprites.add(Platform.group, Moeda.group, JumpBoost.group, Relogio.group)
 
             # Eventos
@@ -64,9 +106,8 @@ class Level():
                     self.reset()
 
             # Quando o tempo acabar volta para o menu
-            # if Relogio.contador.time <= -0.5:
-            #     running = False
-            #     mostrar_game_over()
+            if Relogio.contador.time <= -0.1:
+                running = False
             
             # Updates
             self.player.update(Platform.group)

@@ -51,7 +51,7 @@ class Platform(Sprite):
 
         collisions = pg.sprite.spritecollideany(self, self.group)
         if collisions is not None:
-            self.rect.y = rd.randint(-40,-10) 
+            self.rect.y = rd.randint(-30,-10) 
             self.rect.x = rd.randint(0,DISPLAY_WIDTH-self.rect.width)  
             self.repos_plat()
             
@@ -60,10 +60,10 @@ class Platform(Sprite):
     def update(self, player):   # remove ou acrescenta plataformas 
         
         if player.state!=FALLING and player.rect.y < .4*DISPLAY_HEIGHT:
-            self.rect.y -= player.vy 
+            self.rect.y -= player.vy
         
         if self.rect.y > DISPLAY_HEIGHT:    # Saiu da tela
-            self.rect.y = rd.randint(-40,-10) 
+            self.rect.y = rd.randint(-30,-10) 
             self.rect.x = rd.randint(0,DISPLAY_WIDTH-self.rect.width)  
             self.repos_plat()   # checa se colidiu e reposiciona caso necessario
 

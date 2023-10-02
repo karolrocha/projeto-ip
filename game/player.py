@@ -33,10 +33,10 @@ class Player(Sprite):
     def __init__(self, sheets: list=SHEETS_PLAYER, pos: tuple=(0,DISPLAY_HEIGHT)):
         super().__init__() 
 
-        self.vx = 12 # pxs/tick
+        self.vx = 13 # pxs/tick
         self.vy = 0
         self.direction = RIGHT
-        self.state = RUNNING
+        self.state = IDLE
 
         self.sprites = load_sprites(sheets, img_dir)
 
@@ -146,7 +146,9 @@ class Player(Sprite):
                 self.state = RUNNING
             else:
                 self.state = IDLE 
-            self.apoio = True
+
+        if self.rect.top < 0:
+            self.rect.top = 0
 
         if self.rect.bottom == GROUND:
             self.chao +=1

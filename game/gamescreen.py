@@ -117,8 +117,11 @@ class Level(Sprite):
 
             # Eventos
             for event in pg.event.get():
-                if event.type == pg.QUIT or (event.type == pg.KEYDOWN and pg.key.get_pressed()[pg.K_ESCAPE]): 
-                    #fecha no botao de quit da janela ou apertando ESC
+                if event.type == pg.QUIT:
+                    running = False
+                    sys.exit()
+                if event.type == pg.KEYDOWN and pg.key.get_pressed()[pg.K_ESCAPE]: 
+                    # volta para o menu apertando ESC
                     running = False
                     self.reset()
 

@@ -35,6 +35,9 @@ Tuplas são estruturas de dados semelhantes às listas, mas são imutáveis, ou 
 
 Eles são úteis para armazenar informações que podem ser acessadas de forma eficiente usando uma chave específica.
 No nosso projeto, dicionários foram usados para armazenar informações sobre a movimentação do personagem, como mapear teclas do teclado para ações no jogo.
+### Recursão:
+
+Recursão é uma técnica na programação em que uma função resolve um problema chamando a si mesma. É como um loop, mas a iteração ocorre através de chamadas recursivas, o que pode simplificar soluções para problemas complexos. Usamos recursão para lidar com colisões, incluindo o reposicionamento de plataformas sobrepostas. Essa abordagem ofereceu eficiência e elegância ao código, mantendo a flexibilidade e modularidade.
 
 ## Bibliotecas Utilizadas:
 1. Pygame: Fornecendo funcionalidades para o jogo.

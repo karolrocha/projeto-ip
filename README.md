@@ -17,26 +17,68 @@ Nos inspiramos no "Doodle Jump" para criar um jogo semelhante, com mecânicas de
 
 ### Programação Orientada a Objetos (POO):
 
-A Programação Orientada a Objetos é um paradigma de programação que se baseia no conceito de objetos, que são instâncias de classes. No contexto do seu projeto, POO provavelmente foi usado para criar objetos que representam elementos do jogo, como o player, coletáveis, troca de tela e cenário.
-O player, por exemplo, pode ser uma classe que contém atributos como posição, velocidade e métodos para movimentar o personagem, interagir com outros objetos ou responder a eventos.
+A Programação Orientada a Objetos (POO) é um paradigma de programação que se baseia na criação de objetos, que são instâncias de classes. No contexto do nosso projeto, POO foi usado para criar objetos que representam elementos do jogo, como o player, coletáveis, troca de tela e cenário.
 A utilização de POO ajuda a organizar o código de forma mais modular, facilitando a manutenção e o entendimento do projeto.
 ### Laços de Repetição e Condicionais:
 
 Laços de repetição, como for e while, são usados para executar um conjunto de instruções várias vezes. Eles são essenciais em jogos para atualizar o estado do jogo, como a posição dos objetos em cada quadro.
-Condicionais, como if, else e elif, são usados para tomar decisões com base em condições específicas. Eles são usados para controlar o fluxo do jogo, como verificar se o jogador colidiu com um coletável ou se atingiu um objetivo.
-Esses elementos são fundamentais para criar a lógica do jogo e para garantir que ele responda corretamente às ações do jogador.
+Esses elementos foram fundamentais para criar a lógica do jogo e para garantir que ele responda corretamente às ações do jogador.
 ### Listas:
 
-Listas são estruturas de dados que permitem armazenar coleções de elementos em uma única variável. No contexto do jogo, listas podem ser usadas para várias finalidades.
-Por exemplo, podem ser usadas para armazenar as posições das plataformas no cenário, permitindo que o jogo saiba onde colocá-las e como atualizá-las.
+No contexto do jogo, listas podem ser usadas para várias finalidades.
+Por exemplo, foram usadas para armazenar as posições das plataformas no cenário, permitindo que o jogo saiba onde colocá-las e como atualizá-las.
 Além disso, listas podem ser usadas para controlar a quantidade de coletáveis no jogo, permitindo que você defina um número máximo e remova-os da lista quando forem coletados.
 ### Tuplas:
 
-Tuplas são estruturas de dados semelhantes às listas, mas são imutáveis, ou seja, seus elementos não podem ser alterados após a criação. No Pygame, as tuplas podem ser usadas para várias finalidades.
-Por exemplo, podem ser usadas para definir as cores dos objetos, as posições iniciais dos elementos no jogo ou as dimensões de uma imagem.
-As tuplas são úteis quando você precisa garantir que certos valores permaneçam constantes ao longo do jogo.
+Tuplas são estruturas de dados semelhantes às listas, mas são imutáveis, ou seja, seus elementos não podem ser alterados após a criação. No Pygame, as tuplas foram usadas para definir as cores dos objetos, as posições iniciais dos elementos no jogo ou as dimensões de uma imagem.
 ### Dicionários:
 
-Dicionários são estruturas de dados que associam chaves a valores. Eles são úteis para armazenar informações que podem ser acessadas de forma eficiente usando uma chave específica.
-No seu projeto, dicionários podem ser usados para armazenar informações sobre a movimentação do personagem, como mapear teclas do teclado para ações no jogo.
-Isso permite que o jogo responda às entradas do jogador de maneira flexível e dinâmica, tornando-o mais interativo e envolvente.
+Eles são úteis para armazenar informações que podem ser acessadas de forma eficiente usando uma chave específica.
+No nosso projeto, dicionários foram usados para armazenar informações sobre a movimentação do personagem, como mapear teclas do teclado para ações no jogo.
+
+## Bibliotecas Utilizadas:
+1. Pygame: Fornecendo funcionalidades para o jogo.
+2. Random: Usado para a geração de plataformas e decisões sobre a aparência de coletáveis.
+3. OS: Ela é uma biblioteca de comandos do sistema operacional que vai te auxiliar a fazer algumas operações dentro do seu computador.
+
+## Divisão do Projeto em Módulos:
+
+1. Classe Telas: Armazena os módulos de tela inicial, tela do jogo e a tela de game over.
+2. Cenário: Inclui a classe plataforma.
+3. Coletáveis: Responsável pelos pulos duplos, as moedas e o tempo extra.
+4. Funcs: Armazena variáveis importantes.
+5. Menu: Funciona como o menu do jogo, permitindo iniciar o jogo, sair e acessar configurações.
+6. Player: Gerencia as questões relacionadas aos jogadores.
+
+## Desafios e Aprendizados:
+
+### Primeiro Tópico - Subestimação do Projeto:
+
+O maior erro foi subestimar o projeto. Achávamos que o projeto seria fácil, pois estaríamos utilizando uma biblioteca pré-definida, o que nos levou a pensar que seria mais simples. No entanto, tomamos um choque de realidade quando efetivamente começamos a trabalhar no projeto e percebemos que não seria tão simples como imaginávamos.
+
+Lidamos: Tivemos que ajustar nossas expectativas e abordagem. Foi como um choque de realidade quando percebemos que o projeto era realmente complexo. Então, nos comprometemos a trabalhar mais duro e a estudar pra conseguir entregar um bom trabalho
+
+### Segundo Tópico - Desafio com o Tempo:
+
+O segundo grande desafio que enfrentamos foi o gerenciamento do tempo, especialmente porque estávamos no final do período letivo e enfrentávamos muitos contratempos, incluindo a necessidade de lidar com várias provas e projetos de outras disciplinas em um curto espaço de tempo.
+
+Lidamos: Para enfrentar esse desafio, implementamos um sólido gerenciamento de projeto. Isso nos permitiu dividir as tarefas de forma equitativa e eficiente, garantindo que ninguém ficasse sobrecarregado. Além disso, estabelecemos prioridades e prazos para manter o projeto dentro do cronograma.
+
+### Terceiro Tópico - Experiência de Trabalho em Grupo e Outros Aprendizados:
+
+Nesse terceiro ponto, adquirimos uma valiosa experiência de trabalho em grupo, aprendemos sobre o versionamento de código com o Git/GitHub, desenvolvemos habilidades de gerenciamento de tempo e aplicamos os conceitos que aprendemos em sala de aula para criar um projeto real e tangível.
+
+## Como jogar 
+ ### Inicializando 
+ 1. É necessário instalar a biblioteca 'PyGame' para executar o jogo utilizando o comando "pip install pygame" no cmd.
+ 2. Clone/baixe o repositório em sua máquina para ter acesso ao código
+ 3. Após instalar a biblioteca PyGame o arquivo zip em sua máquina local, execute o arquivo "main_menu.py"
+ ### Jogabilidade
+A - Move para esquerda
+D - Move para direita
+Barra de espaço - Pula
+E - Pulo duplo (Power-up)
+### Itens
+TIMER - Aumenta +10seg de tempo de sobrevivência 
+GOLD - Moedas coletáveis
+BOTA - Power-up para pulo duplo

@@ -88,4 +88,5 @@ BOTA - Power-up para pulo duplo<br>
 
 ## Capturas de tela
 ![image](https://github.com/karolrocha/projeto-ip/assets/144039459/88388d6f-7fa6-4789-9251-a941a9421e9d)
-
+![image](https://github.com/karolrocha/projeto-ip/assets/144039459/d3608e2d-36a7-42a3-9f4b-fc4e7558a62b)
+![image](https://github.com/karolrocha/projeto-ip/assets/144039459/a36f6764-5c34-44f1-b045-5e4863109679)

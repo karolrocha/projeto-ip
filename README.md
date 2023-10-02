@@ -6,7 +6,7 @@ Nos inspiramos no "Doodle Jump" para criar um jogo semelhante, com mecânicas de
 
 ## Contribuições dos Integrantes:
 
-- [Karolyne Rocha](https://github.com/karolrocha): Trabalhou nos coletáveis.
+- [Karolyne Rocha](https://github.com/karolrocha): Criou os coletáveis e suas mecânicas, design e display. Implementou o pulo duplo do personagem e o design das plataformas. 
 - [Lucas Oliveira](https://github.com/lucvseco): Criou a tela inicial e ajudou na parte do game over.
 - [Lucas Alexandre](https://github.com/LucasalMarques): Trabalhou nas plataformas e tela cheia.
 - [Gabriel Marques](https://github.com/gabriel-gma5): Criou o personagem, suas funcionalidades e o mapa do jogo, além de ajudar outros integrantes.
@@ -35,20 +35,23 @@ Tuplas são estruturas de dados semelhantes às listas, mas são imutáveis, ou 
 
 Eles são úteis para armazenar informações que podem ser acessadas de forma eficiente usando uma chave específica.
 No nosso projeto, dicionários foram usados para armazenar informações sobre a movimentação do personagem, como mapear teclas do teclado para ações no jogo.
+### Recursão:
+
+Recursão é uma técnica na programação em que uma função resolve um problema chamando a si mesma. É como um loop, mas a iteração ocorre através de chamadas recursivas, o que pode simplificar soluções para problemas complexos. Usamos recursão para lidar com colisões, incluindo o reposicionamento de plataformas sobrepostas. Essa abordagem ofereceu eficiência e elegância ao código, mantendo a flexibilidade e modularidade.
 
 ## Bibliotecas Utilizadas:
 1. Pygame: Fornecendo funcionalidades para o jogo.
-2. Random: Usado para a geração de plataformas e decisões sobre a aparência de coletáveis.
+2. Random: Usado para a geração de plataformas e decisões quanto à probabilidade de aparecimento de coletáveis ao longo do jogo.
 3. OS: Ela é uma biblioteca de comandos do sistema operacional que vai te auxiliar a fazer algumas operações dentro do seu computador.
 
 ## Divisão do Projeto em Módulos:
 
 1. Classe Telas: Armazena os módulos de tela inicial, tela do jogo e a tela de game over.
 2. Cenário: Inclui a classe plataforma.
-3. Coletáveis: Responsável pelos pulos duplos, as moedas e o tempo extra.
+3. Coletáveis: Responsável pelas botas, que permitem os pulos duplos; as moedas e o tempo extra.
 4. Funcs: Armazena variáveis importantes.
-5. Menu: Funciona como o menu do jogo, permitindo iniciar o jogo, sair e acessar configurações.
-6. Player: Gerencia as questões relacionadas aos jogadores.
+5. Menu: Funciona como o menu do jogo, permitindo iniciar o jogo e sair.
+6. Player: Gerencia as questões relacionadas ao jogador, além de guardar informações importantes, como a quantidade de cada coletável.
 
 ## Desafios e Aprendizados:
 
@@ -56,7 +59,7 @@ No nosso projeto, dicionários foram usados para armazenar informações sobre a
 
 O maior erro foi subestimar o projeto. Achávamos que o projeto seria fácil, pois estaríamos utilizando uma biblioteca pré-definida, o que nos levou a pensar que seria mais simples. No entanto, tomamos um choque de realidade quando efetivamente começamos a trabalhar no projeto e percebemos que não seria tão simples como imaginávamos.
 
-Lidamos: Tivemos que ajustar nossas expectativas e abordagem. Foi como um choque de realidade quando percebemos que o projeto era realmente complexo. Então, nos comprometemos a trabalhar mais duro e a estudar pra conseguir entregar um bom trabalho
+Lidamos: Tivemos que ajustar nossas expectativas e abordagem. Foi como um choque de realidade quando percebemos que o projeto era realmente complexo. Então, nos comprometemos a trabalhar mais duro e a estudar pra conseguir entregar um bom trabalho.
 
 ### Segundo Tópico - Desafio com o Tempo:
 

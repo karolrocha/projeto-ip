@@ -26,12 +26,9 @@ class Level(Sprite):
         self.last_update = pg.time.get_ticks()
         self.image = self.sprites[self.frame]
         self.rect = self.image.get_rect()
-        self.scroll = 0
 
         self.group_sprites = Group()
         self.player = Player()
-
-        # self.update_go = pg.time.get_ticks()
 
     def update(self):    # Atualiza infos do display
         timer_rect = Relogio.contador.rect

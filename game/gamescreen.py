@@ -44,7 +44,7 @@ class Level(Sprite):
         botas_imagem = pg.transform.scale(botas_imagem, (38, 38))
         bota_rect = botas_imagem.get_rect()
         
-        font = pg.font.Font(None, 30)
+        font = pg.font.Font(None, 36)
         score_text = font.render(str(self.player.score), True, (255, 255, 255))
         botas_text = font.render(str(self.player.botas), True, (255, 255, 255))
 
@@ -127,7 +127,7 @@ class Level(Sprite):
 
             # Quando o tempo acabar volta para o menu
             if Relogio.contador.time <= 0:
-                running = False
+                self.player.state=DEAD
                 self.gameover()
 
             # Updates

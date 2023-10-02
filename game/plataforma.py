@@ -17,7 +17,7 @@ class Platform(Sprite):
         # itens da plataforma
         self.moedas = Group()
         self.relogios = Group()
-        self.djumps = Group()
+        self.jumpb = Group()
 
     def plat_coin(self):    # aparecimento de moedas em plataformas
 
@@ -36,13 +36,14 @@ class Platform(Sprite):
         Relogio.group.add(relogio)
         self.relogios.add(relogio)
 
-    def plat_djump(self):   # aparecimento de pulo duplo em plataformas
+    def plat_jumpb(self):   # aparecimento de pulo duplo em plataformas
 
         for _ in range(rd.randint(1,3)):
             pulo = JumpBoost('images/bota.png')
             pulo.rect.x = rd.randrange(self.rect.x,self.rect.x+self.rect.width)
             pulo.rect.y = self.rect.y-pulo.rect.height-10
             JumpBoost.group.add(pulo)
+            self.jumpb.add(pulo)
 
     def repos_plat(self):  # metodo recursivo pra reposicionar plataformas que se sobrepoem
 
@@ -52,7 +53,7 @@ class Platform(Sprite):
         collisions = pg.sprite.spritecollideany(self, self.group)
         if collisions is not None:
             self.rect.y = rd.randint(-30,-10) 
-            self.rect.x = rd.randint(0,DISPLAY_WIDTH-self.rect.width)  
+            self.rect.x = rd.randint(20,DISPLAY_WIDTH-self.rect.width-30)  
             self.repos_plat()
             
         self.add(self.group)
@@ -64,13 +65,13 @@ class Platform(Sprite):
         
         if self.rect.y > DISPLAY_HEIGHT:    # Saiu da tela
             self.rect.y = rd.randint(-30,-10) 
-            self.rect.x = rd.randint(0,DISPLAY_WIDTH-self.rect.width)  
+            self.rect.x = rd.randint(20,DISPLAY_WIDTH-self.rect.width-30)  
             self.repos_plat()   # checa se colidiu e reposiciona caso necessario
 
         # geradores de itens
-        if rd.randint(0,2500)<1: # botas
-            self.plat_djump()
-        if rd.randint(0,2100)<1 and len(self.relogios)<1:  # relogios
+        if rd.randint(0,100)<1 and self.rect.y<0 and len(self.jumpb)<4: # botas
+            self.plat_jumpb()
+        if rd.randint(0,100)<1 and self.rect.y<0 and len(self.relogios)<1:  # relogios
             self.plat_clock()
         if rd.randint(0,10)<1 and self.rect.y<0 and len(self.moedas)<3:  # moedas
             self.plat_coin()

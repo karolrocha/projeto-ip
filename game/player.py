@@ -15,7 +15,7 @@ def load_sprites(sheet_list: list, img_dir: str):
         frame_num = sheet.get_width()//sqr_side
 
         for num in range(frame_num):
-            frame = sheet.subsurface((num*(sqr_side)+70, 60), (50, 55))     # cada frame tem aprox 55x55 (pxs)
+            frame = sheet.subsurface((num*(sqr_side)+70, 60), (50, 55))     # cada frame tem aprox 50x55 (pxs)
             image_right = pg.transform.scale(frame, (90,90))       # virado para direita (padrão do arquivo)
             image_left = pg.transform.flip(image_right, flip_x=True, flip_y=False)   # virado para esquerda
 
@@ -30,8 +30,8 @@ def load_sprites(sheet_list: list, img_dir: str):
 
 
 class Player(Sprite):
-    def __init__(self, sheets: list=SHEETS_PLAYER, pos: tuple=(0,DISPLAY_HEIGHT)):
-        super().__init__() 
+    def __init__(self, sheets: list=SHEETS_PLAYER, pos: list=START_PLAT[0]):
+        super().__init__()  
 
         self.vx = 13 # pxs/tick
         self.vy = 0
@@ -46,7 +46,7 @@ class Player(Sprite):
         self.image = inic_animation[self.frame]
         self.last_update= pg.time.get_ticks()
         
-        self.rect = self.image.get_rect(topleft=pos)
+        self.rect = self.image.get_rect(bottomleft=pos)
         self.highest_y = 0
 
         self.chao = 0
@@ -149,9 +149,3 @@ class Player(Sprite):
 
         if self.rect.top < 0:
             self.rect.top = 0
-
-        if self.rect.bottom == GROUND:
-            self.chao +=1
-
-        # if self.chao > 120:
-        #     mostrar_game_over()

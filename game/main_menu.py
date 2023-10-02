@@ -1,5 +1,5 @@
 from funcs import *
-from classes_telas.tela_jogo import * 
+from gamescreen import * 
 
 pg.init()
 
@@ -12,15 +12,19 @@ def load_sprites(dir: str):  # dim = 1000x750
     bg_images = []
     for i in range(1,4):
         image = load(dir+f'layer_{i}.png').convert_alpha()
+        width = image.get_width()
+        ratio = DISPLAY_WIDTH/width
         height = image.get_height()
-        ratio = 1000/320
         image = pg.transform.scale(image, (1000, int(height*ratio)))
         bg_images.append(image)
 
+    # reajuste da segunda layer
     layer_2 = pg.transform.scale(bg_images[1], (1000,500))
     bg_images[1] = layer_2
+
     return bg_images
-  
+
+
 class Menu(Sprite):
     def __init__(self, screen: pg.surface.Surface):
         super().__init__()
@@ -38,11 +42,11 @@ class Menu(Sprite):
             if i!=2:
                 self.screen.blit(img, (0,i*250))
 
-        width = self.sprites[2].get_width()
+        width = DISPLAY_WIDTH
         for i in range(3):
             self.screen.blit(self.sprites[2],(i*width + self.scroll, 657))
-
-        self.scroll -= 1
+            
+        self.scroll -= .8
         if abs(self.scroll)>width:
             self.scroll=0
 
@@ -75,9 +79,18 @@ class Menu(Sprite):
                         selecionado = (selecionado + 1) % len(opcoes)
             
             # Criar texto para o menu
+            fonte_path = 'game/fonte/The Centurion .ttf'
+            fonte_titulo = pg.font.Font(fonte_path, 60)
+
+            texto_tiulo = fonte_titulo.render('Medieval Jump', True, BRANCO)
+            titulo_rect = texto_tiulo.get_rect()
+            titulo_rect.center = (DISPLAY_WIDTH//2, 200)
+            self.screen.blit(texto_tiulo,titulo_rect)
+
+            fonte = pg.font.Font(fonte_path, 45)
             for i, opcao in enumerate(opcoes):
-                cor = COR_TEXTO if i == selecionado else (100, 100, 100)
-                texto = FONT_TEXT.render(opcao, True, cor)
+                cor = BRANCO if i == selecionado else (100, 100, 100)
+                texto = fonte.render(opcao, True, cor)
                 texto_rect = texto.get_rect()
                 texto_rect.center = (DISPLAY_WIDTH // 2, DISPLAY_HEIGHT // 2 + i * 50)
                 

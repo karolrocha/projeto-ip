@@ -1,5 +1,3 @@
-import sys
-sys.path.append('game')
 img_dir = 'images/background/'
 
 from funcs import *
@@ -34,25 +32,26 @@ class Level(Sprite):
         self.player = Player()
 
     def update(self,player):    # Atualiza infos do display
-        hits = pg.sprite.spritecollide(player, Moeda.group, True)
-        player.score += len(hits)
-
-        hits = pg.sprite.spritecollide(player, JumpBoost.group, True)
-        player.botas += len(hits)
 
         moeda_imagem = pg.image.load('images/moeda.png')
         moeda_imagem = pg.transform.scale(moeda_imagem, (35, 35))
+        moeda_rect = moeda_imagem.get_rect()
         self.screen.blit(moeda_imagem, (DISPLAY_WIDTH-50, DISPLAY_HEIGHT-677))
 
         botas_imagem = pg.image.load('images/bota.png')
         botas_imagem = pg.transform.scale(botas_imagem, (38, 38))
+        bota_rect = botas_imagem.get_rect()
         self.screen.blit(botas_imagem, (DISPLAY_WIDTH-50, DISPLAY_HEIGHT-625))
 
         font = pg.font.Font(None, 36)
         score_text = font.render(str(player.score), True, (255, 255, 255))
         botas_text = font.render(str(player.botas), True, (255, 255, 255))
-        self.screen.blit(score_text, (DISPLAY_WIDTH-70, DISPLAY_HEIGHT-672))
-        self.screen.blit(botas_text, (DISPLAY_WIDTH-70, DISPLAY_HEIGHT-620))
+        
+        score_rect = score_text.get_rect(bottomright=(DISPLAY_WIDTH-moeda_rect.width-15, 70+moeda_rect.height))
+        botas_rect = botas_text.get_rect(bottomright=(DISPLAY_WIDTH-bota_rect.width-15, 120+bota_rect.height))
+        
+        self.screen.blit(score_text, score_rect)
+        self.screen.blit(botas_text, botas_rect)
     
     def draw(self):
         # ANIMACAO 
@@ -106,7 +105,7 @@ class Level(Sprite):
                     self.reset()
 
             # Quando o tempo acabar volta para o menu
-            if Relogio.contador.time <= -0.1:
+            if Relogio.contador.time <= 0:
                 running = False
             
             # Updates

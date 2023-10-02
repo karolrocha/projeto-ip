@@ -67,8 +67,11 @@ class Player(Sprite):
             animation = self.sprites[self.direction][self.state]
 
             if self.frame >= len(animation):
-                self.frame = 0
-            
+                if self.state!=DEAD:
+                    self.frame = 0
+                else:
+                    self.frame = len(animation)-1
+
             center = self.rect.center
             # Atualiza imagem atual
             self.image = animation[self.frame]
@@ -142,10 +145,7 @@ class Player(Sprite):
         if self.rect.bottom > GROUND:
             self.rect.bottom = GROUND
             self.vy = 0
-            if keys[pg.K_a] or keys[pg.K_d]:
-                self.state = RUNNING
-            else:
-                self.state = IDLE 
+            self.state=DEAD
 
         if self.rect.top < 0:
             self.rect.top = 0

@@ -14,6 +14,7 @@ DISPLAY_HEIGHT = 750
 DISPLAY_RESOLUTION = DISPLAY_WIDTH,DISPLAY_HEIGHT
 GAME_BG_IMG = 'game_sheet.png'
 
+FONTE_PATH = 'game/fonte/The Centurion .ttf'
 BRANCO = (255, 255, 255)
 
 # plataformas iniciais
@@ -38,7 +39,8 @@ IDLE = 'Idle.png'
 JUMPING = 'Jump.png'
 FALLING = 'Fall.png'
 RUNNING = 'Run.png'
-SHEETS_PLAYER = [IDLE,RUNNING,FALLING,JUMPING]
+DEAD = 'Death.png'
+SHEETS_PLAYER = [IDLE,RUNNING,FALLING,JUMPING,DEAD]
 # virado para:
 LEFT = 'left'
 RIGHT = 'right'

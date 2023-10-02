@@ -79,15 +79,14 @@ class Menu(Sprite):
                         selecionado = (selecionado + 1) % len(opcoes)
             
             # Criar texto para o menu
-            fonte_path = 'game/fonte/The Centurion .ttf'
-            fonte_titulo = pg.font.Font(fonte_path, 60)
+            fonte_titulo = pg.font.Font(FONTE_PATH, 60)
 
             texto_tiulo = fonte_titulo.render('Medieval Jump', True, BRANCO)
             titulo_rect = texto_tiulo.get_rect()
             titulo_rect.center = (DISPLAY_WIDTH//2, 200)
             self.screen.blit(texto_tiulo,titulo_rect)
 
-            fonte = pg.font.Font(fonte_path, 45)
+            fonte = pg.font.Font(FONTE_PATH, 45)
             for i, opcao in enumerate(opcoes):
                 cor = BRANCO if i == selecionado else (100, 100, 100)
                 texto = fonte.render(opcao, True, cor)

@@ -69,16 +69,16 @@ Lidamos: Para enfrentar esse desafio, implementamos um sólido gerenciamento de 
 Nesse terceiro ponto, adquirimos uma valiosa experiência de trabalho em grupo, aprendemos sobre o versionamento de código com o Git/GitHub, desenvolvemos habilidades de gerenciamento de tempo e aplicamos os conceitos que aprendemos em sala de aula para criar um projeto real e tangível.
 
 ## Como jogar 
- ### Inicializando 
- 1. É necessário instalar a biblioteca 'PyGame' para executar o jogo utilizando o comando "pip install pygame" no cmd.
+ ### Inicializando
+ 1. É necessário instalar a biblioteca PyGame para executar o jogo utilizando o comando "pip install pygame" no cmd.
  2. Clone/baixe o repositório em sua máquina para ter acesso ao código
  3. Após instalar a biblioteca PyGame o arquivo zip em sua máquina local, execute o arquivo "main_menu.py"
  ### Jogabilidade
-A - Move para esquerda
-D - Move para direita
-Barra de espaço - Pula
+A - Move para esquerda<br>
+D - Move para direita<br>
+Barra de espaço - Pula<br>
 E - Pulo duplo (Power-up)
 ### Itens
-TIMER - Aumenta +10seg de tempo de sobrevivência 
-GOLD - Moedas coletáveis
-BOTA - Power-up para pulo duplo
+TIMER - Aumenta +10seg de tempo de sobrevivência <br>
+GOLD - Moedas coletáveis<br>
+BOTA - Power-up para pulo duplo<br>

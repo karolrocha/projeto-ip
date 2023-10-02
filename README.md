@@ -75,7 +75,7 @@ Nesse terceiro ponto, adquirimos uma valiosa experiência de trabalho em grupo, 
  ### Inicializando
  1. É necessário instalar a biblioteca PyGame para executar o jogo utilizando o comando "pip install pygame" no cmd.
  2. Clone/baixe o repositório em sua máquina para ter acesso ao código
- 3. Após instalar a biblioteca PyGame o arquivo zip em sua máquina local, abra o folder do arquivo dentro de uma IDE e execute o arquivo "main_menu.py"
+ 3. Após instalar a biblioteca PyGame o arquivo zip em sua máquina local, abra o folder do repositório dentro de uma IDE e execute o arquivo "main_menu.py"
  ### Jogabilidade
 A - Move para esquerda<br>
 D - Move para direita<br>
